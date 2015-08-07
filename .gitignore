@@ -1,0 +1,27 @@
+*.pyc
+
+# Virtualenv stuffs
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ss]cripts
+pyvenv.cfg
+pip-selfcheck.json
+
+# Apple weirdness and such
+.DS_Store
+*.swp
+
+# Sublime Text artifacts
+*.sublime-workspace
+*.sublime-project
+
+# Working experiment code
+junk_drawer/
+gps.json
+
+# S3krit
+.env
+.env.file
+.env.sh
