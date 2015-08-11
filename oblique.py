@@ -47,7 +47,7 @@ def oblique(**kwargs):
 
 @app.route('/strategy')
 def index():
-    strat = strategy()
+    strat = strategy() + '\n'
     return strat
 
 
