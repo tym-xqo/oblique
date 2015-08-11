@@ -35,15 +35,17 @@ def i_ching():
     return {'hexagram': hexagram, 'url': url}
 
 
-@slack.command('oblique', token=slacktoken,
-               team_id=team, methods=['POST'])
+# @slack.command('oblique', token=slacktoken,
+#                team_id=team, methods=['POST'])
+@app.route('/test')
 def oblique(**kwargs):
     strat = strategy()
     iching = i_ching()
     url = iching['url']
     hexagram = iching['hexagram']
     message = '%s\n <%s|%s>' % (strat, url, hexagram)
-    return slack.response(message)
+    return message
+    # return slack.response(message)
 
 @app.route('/strategy')
 def index():
