@@ -30,14 +30,13 @@ def i_ching():
         chis = i.readlines()
     idx = rnd.generate_integers(1,0,63)
     hexagram = chis[idx[0]].strip()
-    hexagram_no = [idx[0]] + 1
+    hexagram_no = idx[0] + 1
     url = 'http://www.akirarabelais.com/i/i.html#%s' % hexagram_no
     return {'hexagram': hexagram, 'url': url}
 
 
-# @slack.command('oblique', token=slacktoken,
-#                team_id=team, methods=['POST'])
-@app.route('/test')
+@slack.command('oblique', token=slacktoken,
+               team_id=team, methods=['POST'])
 def oblique(**kwargs):
     strat = strategy()
     iching = i_ching()
@@ -45,7 +44,7 @@ def oblique(**kwargs):
     hexagram = iching['hexagram']
     message = '%s\n <%s|%s>' % (strat, url, hexagram)
     return message
-    # return slack.response(message)
+    return slack.response(message)
 
 @app.route('/strategy')
 def index():
@@ -54,4 +53,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=33507)
+    app.run(debug=True, host='0.0.0.0', port=5000)
