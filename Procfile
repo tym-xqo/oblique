@@ -1,1 +1,1 @@
-web: gunicorn oblique:app --debug --log-file=-
+web: gunicorn oblique:app --debug=True --log-file=-
