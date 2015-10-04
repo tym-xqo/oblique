@@ -1,10 +1,10 @@
-FROM ubuntu:14.04
+FROM alpine:latest
 MAINTAINER yagermadden@gmail.com
 
-RUN apt-get update && apt-get install -y \
+RUN apk update && apk add \
     python \
     python-dev \
-    python-pip
+    py-pip
 
 RUN mkdir /oblique
 WORKDIR /oblique
@@ -15,7 +15,9 @@ COPY *.txt /oblique/
 
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+RUN rm -rf /var/cache/apk/* \
+    && rm -rf /tmp/*
 
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "oblique:app", "--log-file=-"]
-# CMD ["python", "oblique.py"]
+EXPOSE 80 
+
+CMD ["gunicorn", "-b", "0.0.0.0:80", "oblique:app", "--log-file=-"]
