@@ -19,7 +19,6 @@ pip-selfcheck.json
 
 # Working experiment code
 junk_drawer/
-gps.json
 
 # S3krit
 .env
