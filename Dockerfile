@@ -9,14 +9,15 @@ RUN apk update && apk add \
 RUN mkdir /oblique
 WORKDIR /oblique
 
-COPY oblique.py /oblique/oblique.py
-RUN chmod +x /oblique/oblique.py
 COPY *.txt /oblique/
 
 RUN pip install -r requirements.txt
 
 RUN rm -rf /var/cache/apk/* \
     && rm -rf /tmp/*
+
+COPY oblique.py /oblique/oblique.py
+RUN chmod +x /oblique/oblique.py
 
 EXPOSE 80 
 

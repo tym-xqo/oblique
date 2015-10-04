@@ -46,10 +46,19 @@ def oblique(**kwargs):
     return message
     return slack.response(message)
 
+# strategy text url
 @app.route('/strategy')
-def index():
+def strategy_txt():
     strat = strategy() + '\n'
     return strat
+# iching text url
+@app.route('/i_ching')
+def i_ching_txt():
+    iching = i_ching()
+    hexagram = iching['hexagram']
+    url = url = iching['url']
+    i_ching_md = '[%s](%s)' % (hexagram, url)
+    return i_ching_md
 
 
 if __name__ == '__main__':
