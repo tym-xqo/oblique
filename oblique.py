@@ -11,11 +11,13 @@ slacktoken = os.getenv('SLACKTOKEN')
 randokey = os.getenv('RANDOMORG_KEY')
 team = os.getenv('SLACKTEAM')
 
+
 def random_client():
     rnd = rorgcli(randokey)
     return rnd
 
 rnd = random_client()
+
 
 def strategy():
     with open('oblique.txt', 'r') as ost:
@@ -25,18 +27,21 @@ def strategy():
     strat = strats[idx[0]].strip()
     return strat
 
+
 def i_ching():
     with open('iching-title.txt', 'r') as i:
         chis = i.readlines()
-    idx = rnd.generate_integers(1,0,63)
+    idx = rnd.generate_integers(1, 0, 63)
     hexagram = chis[idx[0]].strip()
     hexagram_no = idx[0] + 1
     url = 'http://www.akirarabelais.com/i/i.html#%s' % hexagram_no
     return {'hexagram': hexagram, 'url': url}
 
 
-@slack.command('oblique', token=slacktoken,
-               team_id=team, methods=['POST'])
+@slack.command('oblique',
+               token=slacktoken,
+               team_id=team,
+               methods=['POST'])
 def oblique(**kwargs):
     strat = strategy()
     iching = i_ching()
@@ -46,11 +51,14 @@ def oblique(**kwargs):
     return message
     return slack.response(message)
 
+
 # strategy text url
 @app.route('/strategy')
 def strategy_txt():
     strat = strategy() + '\n'
     return strat
+
+
 # iching text url
 @app.route('/i_ching')
 def i_ching_txt():
