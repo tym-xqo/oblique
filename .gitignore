@@ -24,3 +24,4 @@ junk_drawer/
 .env
 .env.file
 .env.shsetenv.sh
+oblique-secret.yml

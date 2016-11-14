@@ -19,6 +19,10 @@ RUN rm -rf /var/cache/apk/* \
 COPY oblique.py /oblique/oblique.py
 RUN chmod +x /oblique/oblique.py
 
-EXPOSE 80 
+EXPOSE 5001 
 
-CMD ["gunicorn", "-b", "0.0.0.0:80", "oblique:app", "--log-file=-"]
+ADD obl-entry.sh /
+
+ENTRYPOINT ["/obl-entry.sh"]
+
+CMD ["gunicorn", "-b", "0.0.0.0:5001", "oblique:app", "--log-file=-"]
