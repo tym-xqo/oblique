@@ -16,5 +16,5 @@ requests==2.33.1
     # via rdoclient
 six==1.17.0
     # via rdoclient
-urllib3==2.6.3
+urllib3==2.7.0
     # via requests
