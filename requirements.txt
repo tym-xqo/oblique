@@ -8,7 +8,7 @@ certifi==2026.2.25
     # via requests
 charset-normalizer==3.4.7
     # via requests
-idna==3.11
+idna==3.15
     # via requests
 rdoclient==1.5.0
     # via -r requirements.in
